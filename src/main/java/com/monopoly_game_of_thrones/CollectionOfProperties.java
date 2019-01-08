@@ -78,7 +78,7 @@ public class CollectionOfProperties {
                 "\n-2 villages: 260" +
                 "\n-3 villages: 360$" +
                 "\n-4 villages: 460$" +
-                "\n-1 castle: 860$");
+                "\n-1 castle: 1060$");
         Tooltip.install(propertyOfLand1,tooltip1);
         MonopolyGameOfThronesApplication.gridOfGame.add(propertyOfLand1,1,10);
 
@@ -90,7 +90,7 @@ public class CollectionOfProperties {
                 "\n-2 villages: 260" +
                 "\n-3 villages: 360$" +
                 "\n-4 villages: 460$" +
-                "\n-1 castle: 860$");
+                "\n-1 castle: 1060$");
         Tooltip.install(propertyOfLand2,tooltip2);
         MonopolyGameOfThronesApplication.gridOfGame.add(propertyOfLand2,1,8);
 
@@ -102,7 +102,7 @@ public class CollectionOfProperties {
                 "\n-2 villages: 300" +
                 "\n-3 villages: 400$" +
                 "\n-4 villages: 500$" +
-                "\n-1 castle: 900$");
+                "\n-1 castle: 1100$");
         Tooltip.install(propertyOfLand3,tooltip3);
         MonopolyGameOfThronesApplication.gridOfGame.add(propertyOfLand3,1,5);
 
@@ -114,7 +114,7 @@ public class CollectionOfProperties {
                 "\n-2 villages: 300" +
                 "\n-3 villages: 400$" +
                 "\n-4 villages: 500$" +
-                "\n-1 castle: 900$");
+                "\n-1 castle: 1100$");
         Tooltip.install(propertyOfLand4,tooltip4);
         MonopolyGameOfThronesApplication.gridOfGame.add(propertyOfLand4,1,3);
 
@@ -126,7 +126,7 @@ public class CollectionOfProperties {
                 "\n-2 villages: 320" +
                 "\n-3 villages: 420$" +
                 "\n-4 villages: 520$" +
-                "\n-1 castle: 920$");
+                "\n-1 castle: 1120$");
         Tooltip.install(propertyOfLand5,tooltip5);
         MonopolyGameOfThronesApplication.gridOfGame.add(propertyOfLand5,1,2);
 
@@ -139,7 +139,7 @@ public class CollectionOfProperties {
                 "\n-2 villages: 340" +
                 "\n-3 villages: 440$" +
                 "\n-4 villages: 540$" +
-                "\n-1 castle: 940$");
+                "\n-1 castle: 1140$");
         Tooltip.install(propertyOfLand6,tooltip6);
         MonopolyGameOfThronesApplication.gridOfGame.add(propertyOfLand6,2,1);
 
@@ -152,7 +152,7 @@ public class CollectionOfProperties {
                 "\n-2 villages: 340" +
                 "\n-3 villages: 440$" +
                 "\n-4 villages: 540$" +
-                "\n-1 castle: 940$");
+                "\n-1 castle: 1140$");
         Tooltip.install(propertyOfLand7,tooltip7);
         MonopolyGameOfThronesApplication.gridOfGame.add(propertyOfLand7,4,1);
 
@@ -165,7 +165,7 @@ public class CollectionOfProperties {
                 "\n-2 villages: 360" +
                 "\n-3 villages: 460$" +
                 "\n-4 villages: 560$" +
-                "\n-1 castle: 960$");
+                "\n-1 castle: 1160$");
         Tooltip.install(propertyOfLand8,tooltip8);
         MonopolyGameOfThronesApplication.gridOfGame.add(propertyOfLand8,5,1);
 
@@ -178,7 +178,7 @@ public class CollectionOfProperties {
                 "\n-2 villages: 380" +
                 "\n-3 villages: 480$" +
                 "\n-4 villages: 580$" +
-                "\n-1 castle: 980$");
+                "\n-1 castle: 1160$");
         Tooltip.install(propertyOfLand9,tooltip9);
         MonopolyGameOfThronesApplication.gridOfGame.add(propertyOfLand9,7,1);
 
@@ -191,7 +191,7 @@ public class CollectionOfProperties {
                 "\n-2 villages: 380" +
                 "\n-3 villages: 480$" +
                 "\n-4 villages: 580$" +
-                "\n-1 castle: 980$");
+                "\n-1 castle: 1180$");
         Tooltip.install(propertyOfLand10,tooltip10);
 
         MonopolyGameOfThronesApplication.gridOfGame.add(propertyOfLand10,9,1);
@@ -205,7 +205,7 @@ public class CollectionOfProperties {
                 "\n-2 villages: 400" +
                 "\n-3 villages: 500$" +
                 "\n-4 villages: 600$" +
-                "\n-1 castle: 1000$");
+                "\n-1 castle: 1200$");
         Tooltip.install(propertyOfLand11,tooltip11);
         MonopolyGameOfThronesApplication.gridOfGame.add(propertyOfLand11,10,1);
 
@@ -217,7 +217,7 @@ public class CollectionOfProperties {
                 "\n-2 villages: 420" +
                 "\n-3 villages: 520$" +
                 "\n-4 villages: 620$" +
-                "\n-1 castle: 1020$");
+                "\n-1 castle: 1220$");
         Tooltip.install(propertyOfLand12,tooltip12);
         MonopolyGameOfThronesApplication.gridOfGame.add(propertyOfLand12,11,2);
 
@@ -229,7 +229,7 @@ public class CollectionOfProperties {
                 "\n-2 villages: 420" +
                 "\n-3 villages: 520$" +
                 "\n-4 villages: 620$" +
-                "\n-1 castle: 1020$");
+                "\n-1 castle: 1220$");
         Tooltip.install(propertyOfLand13,tooltip13);
         MonopolyGameOfThronesApplication.gridOfGame.add(propertyOfLand13,11,4);
 
@@ -241,7 +241,7 @@ public class CollectionOfProperties {
                 "\n-2 villages: 440" +
                 "\n-3 villages: 540$" +
                 "\n-4 villages: 640$" +
-                "\n-1 castle: 1040$");
+                "\n-1 castle: 1240$");
         Tooltip.install(propertyOfLand14,tooltip14);
         MonopolyGameOfThronesApplication.gridOfGame.add(propertyOfLand14,11,5);
 
@@ -253,7 +253,7 @@ public class CollectionOfProperties {
                 "\n-2 villages: 460" +
                 "\n-3 villages: 560$" +
                 "\n-4 villages: 660$" +
-                "\n-1 castle: 1060$");
+                "\n-1 castle: 1260$");
         Tooltip.install(propertyOfLand15,tooltip15);
         MonopolyGameOfThronesApplication.gridOfGame.add(propertyOfLand15,11,7);
 
@@ -265,7 +265,7 @@ public class CollectionOfProperties {
                 "\n-2 villages: 460" +
                 "\n-3 villages: 560$" +
                 "\n-4 villages: 660$" +
-                "\n-1 castle: 1060$");
+                "\n-1 castle: 1260$");
         Tooltip.install(propertyOfLand16,tooltip16);
         MonopolyGameOfThronesApplication.gridOfGame.add(propertyOfLand16,11,8);
 
@@ -277,7 +277,7 @@ public class CollectionOfProperties {
                 "\n-2 villages: 480" +
                 "\n-3 villages: 580$" +
                 "\n-4 villages: 680$" +
-                "\n-1 castle: 1080$");
+                "\n-1 castle: 1280$");
         Tooltip.install(propertyOfLand17,tooltip17);
         MonopolyGameOfThronesApplication.gridOfGame.add(propertyOfLand17,11,10);
 
@@ -290,7 +290,7 @@ public class CollectionOfProperties {
                 "\n-2 villages: 500" +
                 "\n-3 villages: 600$" +
                 "\n-4 villages: 700$" +
-                "\n-1 castle: 1100$");
+                "\n-1 castle: 1300$");
         Tooltip.install(propertyOfLand18,tooltip18);
         MonopolyGameOfThronesApplication.gridOfGame.add(propertyOfLand18,10,11);
 
@@ -303,7 +303,7 @@ public class CollectionOfProperties {
                 "\n-2 villages: 500" +
                 "\n-3 villages: 600$" +
                 "\n-4 villages: 700$" +
-                "\n-1 castle: 1100$");
+                "\n-1 castle: 1300$");
         Tooltip.install(propertyOfLand19,tooltip19);
         MonopolyGameOfThronesApplication.gridOfGame.add(propertyOfLand19,9,11);
 
@@ -316,7 +316,7 @@ public class CollectionOfProperties {
                 "\n-2 villages: 520" +
                 "\n-3 villages: 620$" +
                 "\n-4 villages: 720$" +
-                "\n-1 castle: 1120$");
+                "\n-1 castle: 1320$");
         Tooltip.install(propertyOfLand20,tooltip20);
         MonopolyGameOfThronesApplication.gridOfGame.add(propertyOfLand20,7,11);
 
@@ -329,7 +329,7 @@ public class CollectionOfProperties {
                 "\n-2 villages: 550" +
                 "\n-3 villages: 650$" +
                 "\n-4 villages: 750$" +
-                "\n-1 castle: 1150$");
+                "\n-1 castle: 1350$");
         Tooltip.install(propertyOfLand21,tooltip21);
         MonopolyGameOfThronesApplication.gridOfGame.add(propertyOfLand21,4,11);
 
@@ -342,7 +342,7 @@ public class CollectionOfProperties {
                 "\n-2 villages: 600" +
                 "\n-3 villages: 700$" +
                 "\n-4 villages: 800$" +
-                "\n-1 castle: 1200$");
+                "\n-1 castle: 1400$");
         Tooltip.install(propertyOfLand22,tooltip22);
         MonopolyGameOfThronesApplication.gridOfGame.add(propertyOfLand22,2,11);
 

@@ -50,7 +50,7 @@ public class LandCard {
     public void setNewCastleOnTheLand() {
             this.quantityOfVillages = 0;
             this.quantityOfCastles += 1;
-            price = originPrice + 800;
+            price = originPrice + 1000;
     }
 
     public String getName() {

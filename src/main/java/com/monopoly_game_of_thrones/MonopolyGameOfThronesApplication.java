@@ -36,8 +36,8 @@ public class MonopolyGameOfThronesApplication extends Application {
     private int amountOfMoneyInTheGame = 15000;
     private int startingMoney = 800;
     private int beginPlaceOfThePiece = 0;
-    private int costOfTheVillage = 250;
-    private int costOfTheCastle = 500;
+    private int costOfTheVillage = 150;
+    private int costOfTheCastle = 300;
 
     private AppendableTextComputerStatusPane appendTextComputerStatus = new AppendableTextComputerStatusPane();
     private Label dice1Indication = new Label();
@@ -78,6 +78,7 @@ public class MonopolyGameOfThronesApplication extends Application {
         int los1 = 1 + random.nextInt(100);
         int los2 = 1 + random.nextInt(100);
         int los3 = random.nextInt(5);
+
         if(los1<90){
             buyALand(user);
         }
@@ -90,7 +91,7 @@ public class MonopolyGameOfThronesApplication extends Application {
             }
         }
 
-        if(user.getMoney()<100){
+        if(user.getMoney()<150){
             sellALand(user);
             sellAProperty(user);
         }
@@ -193,10 +194,10 @@ public class MonopolyGameOfThronesApplication extends Application {
    public void sellAProperty(User user) {
         if(user.getUserSetOfLandCards().containsKey(user.getPositionOfThePiece())
         && user.getUserSetOfLandCards().get(user.getPositionOfThePiece()).getQuantityOfVillages()>0
-        && bank.getMoneyInBank()>200){
+        && bank.getMoneyInBank()>150){
                 user.getUserSetOfLandCards().get(user.getPositionOfThePiece()).removeVillageFromTheLand();
-                bank.takeMoneyFromTheBank(200);
-                user.addMoney(200);
+                bank.takeMoneyFromTheBank(150);
+                user.addMoney(150);
                 collectionOfProperties.removieVIllageFromThePane(user.getPositionOfThePiece());
                      if (user.isHuman()) {
                          MessgaeBox.setInformationTextLabel("Sold a village. Land now costs: " + user.getUserSetOfLandCards().get(user.getPositionOfThePiece()).getPrice());
@@ -433,8 +434,8 @@ public class MonopolyGameOfThronesApplication extends Application {
      int valueOfTranslationOfThePiece = user.getPositionOfThePiece() + diceSumValueOfPieceTranslation;
      int bonusAfterPassTheStart = 200;
      int paymentToTheBank1 = 200;
-     int paymentToTheBank2 = 150;
-     int paymentToTheBank3 = 100;
+     int paymentToTheUser = 150;
+     int paymentToTheBank2 = 100;
 
          if (!(valueOfTranslationOfThePiece <= 40)) {
              if (bank.takeMoneyFromTheBank(bonusAfterPassTheStart)) {
@@ -457,13 +458,13 @@ public class MonopolyGameOfThronesApplication extends Application {
                  actualizeUserLabels(user);
              }
          } else if (valueOfTranslationOfThePiece == 38) {
-             paymentExecution(user, paymentToTheBank3);
+             paymentExecution(user, paymentToTheBank2);
              if (user.isHuman()) {
                  actualizeUserLabels(user);
              }
          } else if (valueOfTranslationOfThePiece == 12 ||
                  valueOfTranslationOfThePiece == 28) {
-             paymentExecution(user, paymentToTheBank2);
+             user.addMoney(paymentToTheUser);
              if (user.isHuman()) {
                  actualizeUserLabels(user);
              }
@@ -596,13 +597,13 @@ public class MonopolyGameOfThronesApplication extends Application {
         Button buyAPropertyButton = new Button("$$Buy \na Property$$",villagePin);
         buyAPropertyButton.setContentDisplay(ContentDisplay.LEFT);
         buyAPropertyButton.setTooltip(new Tooltip("COST IF BOUGHT:\n" +
-                "VILLAGE – 250$\n" +
-                "CASTLE – 500$(available after \n 4 villages purchasing \n on one field)\n"));
+                "VILLAGE – 150$\n" +
+                "CASTLE – 300$(available after \n 4 villages purchasing \n on one field)\n"));
 
         Button sellAProperyButton = new Button("$$Sell a Property$$");
         sellAProperyButton.setContentDisplay(ContentDisplay.LEFT);
         sellAProperyButton.setTooltip(new Tooltip("COST IF SOLD:\n" +
-                "VILLAGE – 200$\n" +
+                "VILLAGE – 150$\n" +
                 "CASTLE – 800$\n"));
 
         Button sellALandButton = new Button("$$Sell \na land$$");
@@ -877,7 +878,7 @@ public class MonopolyGameOfThronesApplication extends Application {
         hBox.getChildren().add(textField);
         hBox.getChildren().add(startTheGame);
 
-        startGrid.setGridLinesVisible(true);
+//        startGrid.setGridLinesVisible(true);
         startGrid.add(vBox,0,0,3,1);
         startGrid.add(hBox,0,1);
 
