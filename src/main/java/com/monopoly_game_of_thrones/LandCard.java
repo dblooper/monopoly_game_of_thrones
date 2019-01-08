@@ -13,20 +13,20 @@ public class LandCard {
         this.originPrice = cardPrice;
     }
 
-    public void setTheCostOfTheLand(){
-        if(quantityOfVillages == 4 && quantityOfCastles == 0){
+    public void setTheCostOfTheLand() {
+        if(quantityOfVillages == 4 && quantityOfCastles == 0) {
             price = originPrice + 400;
         }
-        else if(quantityOfVillages == 3 && quantityOfCastles == 0){
+        else if(quantityOfVillages == 3 && quantityOfCastles == 0) {
             price = originPrice + 300;
         }
-        else if(quantityOfVillages == 2 && quantityOfCastles == 0){
+        else if(quantityOfVillages == 2 && quantityOfCastles == 0) {
             price = originPrice + 200;
         }
-        else if(quantityOfVillages == 1 && quantityOfCastles == 0){
+        else if(quantityOfVillages == 1 && quantityOfCastles == 0) {
             price = originPrice + 100;
         }
-        else if(quantityOfVillages == 0 && quantityOfCastles == 1){
+        else if(quantityOfVillages == 0 && quantityOfCastles == 1) {
             price = originPrice + 800;
         }
         else{
@@ -34,20 +34,20 @@ public class LandCard {
         }
     }
 
-    public void setNewVillageOnTheLand(){
+    public void setNewVillageOnTheLand() {
             this.quantityOfVillages += 1;
             setTheCostOfTheLand();
         }
-        public void removeVillageFromTheLand(){
+        public void removeVillageFromTheLand() {
             this.quantityOfVillages -= 1;
             setTheCostOfTheLand();
         }
-    public void removeCastleFromTheLand(){
+    public void removeCastleFromTheLand() {
         this.quantityOfCastles -= 1;
         this.price = originPrice;
     }
 
-    public void setNewCastleOnTheLand(){
+    public void setNewCastleOnTheLand() {
             this.quantityOfVillages = 0;
             this.quantityOfCastles += 1;
             price = originPrice + 800;
@@ -69,7 +69,7 @@ public class LandCard {
         return  price;
     }
 
-    public void setOriginPriceAndProperties(){
+    public void setOriginPriceAndProperties() {
         this.price = originPrice;
         this.quantityOfCastles = 0;
         this.quantityOfVillages = 0;

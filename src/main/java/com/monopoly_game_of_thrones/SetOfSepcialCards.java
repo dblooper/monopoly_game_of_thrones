@@ -7,7 +7,7 @@ public class SetOfSepcialCards {
     private Map<Integer, SpecialCard> specialCards;
 
 
-    public SetOfSepcialCards(){
+    public SetOfSepcialCards() {
         SpecialCard specialCard1 = new SpecialCard("Lannister",200);
         SpecialCard specialCard2 = new SpecialCard("Baratheon",200);
         SpecialCard specialCard3 = new SpecialCard("Targaaryen",200);

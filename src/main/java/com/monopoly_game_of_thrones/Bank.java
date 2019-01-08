@@ -11,7 +11,7 @@ public class Bank {
             this.money -= amountOfMoney;
             return true;
         }
-        else{
+        else {
             MessgaeBox.getInformationTextLabel().setText("No cash in the bank!");
             return false;
         }
@@ -21,7 +21,7 @@ public class Bank {
         if (amountOfMoney>0) {
             this.money += amountOfMoney;
         }
-        else{
+        else {
             System.out.println("Don't make a joke dude!");
         }
     }

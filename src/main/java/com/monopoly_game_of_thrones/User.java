@@ -60,10 +60,10 @@ public class User extends Piece {
         userSetOfLandCards.put(position, landCardAdded);
     }
 
-    public Map<Integer, SpecialCard> getUserSetOfSpecialCards(){ return userSetOfSpecialCards;}
-    public void addToUserSetOfSpecialCards(int position, SpecialCard specialCardAdded){
+    public Map<Integer, SpecialCard> getUserSetOfSpecialCards() { return userSetOfSpecialCards;}
+    public void addToUserSetOfSpecialCards(int position, SpecialCard specialCardAdded) {
         userSetOfSpecialCards.put(position,specialCardAdded);
-        for(Map.Entry<Integer,SpecialCard> entry: userSetOfSpecialCards.entrySet()){
+        for(Map.Entry<Integer,SpecialCard> entry: userSetOfSpecialCards.entrySet()) {
             entry.getValue().setQuantityOfUserSpecialCards(userSetOfSpecialCards.size());
         }
     }

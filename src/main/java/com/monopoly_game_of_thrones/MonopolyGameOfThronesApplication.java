@@ -16,7 +16,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Random;
 
-public class MonopolyGameOfThronesApplication extends Application{
+public class MonopolyGameOfThronesApplication extends Application {
 
     protected static GridPane gridOfGame = new GridPane();
 //    imported images
@@ -73,7 +73,7 @@ public class MonopolyGameOfThronesApplication extends Application{
 
 //------------------------------------------------methods---------------------------------------------------------------------------------------------------------------------
 
-    public void computerTurn(User user){
+    public void computerTurn(User user) {
         Random random = new Random();
         int los1 = 1 + random.nextInt(100);
         int los2 = 1 + random.nextInt(100);
@@ -97,7 +97,7 @@ public class MonopolyGameOfThronesApplication extends Application{
         takeTheRandomCard(user);
     }
 
-    public void removeFromUsersMapAndPane(User user){
+    public void removeFromUsersMapAndPane(User user) {
         if(user != null && computerUsersFlowPane.getChildren().size() > 0){
             computerUsersMap.remove(user.getUserId());
             computerUsersFlowPane.getChildren().clear();
@@ -107,7 +107,7 @@ public class MonopolyGameOfThronesApplication extends Application{
         }
     }
 
-    public void addToComputerUsersMapAndPane(User user, Color color){
+    public void addToComputerUsersMapAndPane(User user, Color color) {
         Label userName = new Label("-> " + user.getUsername());
         userName.setTextFill(color);
         userName.setBackground(new Background(new BackgroundFill(Color.WHITE,CornerRadii.EMPTY,Insets.EMPTY)));
@@ -116,7 +116,7 @@ public class MonopolyGameOfThronesApplication extends Application{
         computerUsersFlowPane.getChildren().add(userName);
     }
 
-    public void takeTheRandomCard(User user){
+    public void takeTheRandomCard(User user) {
         if ((user.getPositionOfThePiece() == 2
                 || user.getPositionOfThePiece() == 17
                 || user.getPositionOfThePiece() == 33
@@ -142,7 +142,7 @@ public class MonopolyGameOfThronesApplication extends Application{
 
     }
 
-    public void buyAProperty(User user ){
+    public void buyAProperty(User user) {
 
         if (user.getUserSetOfLandCards().containsKey(user.getPositionOfThePiece())
                 && user.getMoney() >= costOfTheVillage
@@ -190,7 +190,7 @@ public class MonopolyGameOfThronesApplication extends Application{
         }
    }
 
-   public void sellAProperty(User user){
+   public void sellAProperty(User user) {
         if(user.getUserSetOfLandCards().containsKey(user.getPositionOfThePiece())
         && user.getUserSetOfLandCards().get(user.getPositionOfThePiece()).getQuantityOfVillages()>0
         && bank.getMoneyInBank()>200){
@@ -203,7 +203,7 @@ public class MonopolyGameOfThronesApplication extends Application{
                          user.userFlowPaneCardActualization();
                          actualizeUserLabels(user);
                      }
-                    if(!user.isHuman()){
+                    if(!user.isHuman()) {
                         appendTextComputerStatus.appendText(user.getUsername() + ": Sold a village. Land now costs: "+ user.getUserSetOfLandCards().get(user.getPositionOfThePiece()).getPrice());
                         actualizeComputerBankCardsLabels();
                     }
@@ -220,7 +220,7 @@ public class MonopolyGameOfThronesApplication extends Application{
                             user.userFlowPaneCardActualization();
                             actualizeUserLabels(user);
                         }
-                        if(!user.isHuman()){
+                        if(!user.isHuman()) {
                             appendTextComputerStatus.appendText(user.getUsername() + ": Sold a castle. Land now costs: "+ user.getUserSetOfLandCards().get(user.getPositionOfThePiece()).getPrice());
                             actualizeComputerBankCardsLabels();
                         }
@@ -233,7 +233,7 @@ public class MonopolyGameOfThronesApplication extends Application{
 
    }
 
-    public void buyALand(User user){
+    public void buyALand(User user) {
         if (setOfLandCards.returnMap().containsKey(user.getPositionOfThePiece())
                 && user.getMoney() > setOfLandCards.getCard(user.getPositionOfThePiece()).getPrice()
                 && !(user.getUserSetOfLandCards().containsKey(user.getPositionOfThePiece()))) {
@@ -242,13 +242,13 @@ public class MonopolyGameOfThronesApplication extends Application{
             bank.giveMoneyToTheBank(setOfLandCards.getCard(user.getPositionOfThePiece()).getPrice());
             setOfLandCards.removeCardFromMap(user.getPositionOfThePiece(), user.getUserSetOfLandCards().get(user.getPositionOfThePiece()));
             collectionOfProperties.setIsBought(user.getPositionOfThePiece());
-                if(user.isHuman()){
+                if(user.isHuman()) {
                     actualizeUserLabels(user);
                     MessgaeBox.getInformationTextLabel().setText("Bought: " + user.getUserSetOfLandCards().get(user.getPositionOfThePiece()).getName());
                     user.addtoUserFlowPaneCardStatus(user.getUserSetOfLandCards().get(user.getPositionOfThePiece()).getName(), user.getUserSetOfLandCards().get(user.getPositionOfThePiece()).getPrice());
                     user.userFlowPaneCardActualization();
                 }
-                if(!user.isHuman()){
+                if(!user.isHuman()) {
                     appendTextComputerStatus.appendText(user.getUsername() + ": Bought: " + user.getUserSetOfLandCards().get(user.getPositionOfThePiece()).getName()+ " Land costs: " +user.getUserSetOfLandCards().get(user.getPositionOfThePiece()).getPrice());
                     actualizeComputerBankCardsLabels();
             }
@@ -267,7 +267,7 @@ public class MonopolyGameOfThronesApplication extends Application{
                     user.addtoUserFlowPaneCardStatus(user.getUserSetOfSpecialCards().get(user.getPositionOfThePiece()).getName(), user.getUserSetOfSpecialCards().get(user.getPositionOfThePiece()).getPrice());
                     user.userFlowPaneCardActualization();
                 }
-                if(!user.isHuman()){
+                if(!user.isHuman()) {
                     appendTextComputerStatus.appendText(user.getUsername() + ": Bought: " + user.getUserSetOfSpecialCards().get(user.getPositionOfThePiece()).getName()+ " Land costs: " +user.getUserSetOfSpecialCards().get(user.getPositionOfThePiece()).getPrice() );
                     actualizeComputerBankCardsLabels();
                 }
@@ -278,7 +278,7 @@ public class MonopolyGameOfThronesApplication extends Application{
         }
     }
 
-    public void sellALand(User user){
+    public void sellALand(User user) {
         if(user.getUserSetOfLandCards().containsKey(user.getPositionOfThePiece())){
             LandCard landToDelete = user.getUserSetOfLandCards().get(user.getPositionOfThePiece()) ;
             bank.takeMoneyFromTheBank(landToDelete.getPrice());
@@ -294,7 +294,7 @@ public class MonopolyGameOfThronesApplication extends Application{
                 user.userFlowPaneCardActualization();
                 actualizeUserLabels(user);
             }
-            if(!user.isHuman()){
+            if(!user.isHuman()) {
                 appendTextComputerStatus.appendText(user.getUsername() + ": Sold: " + landToDelete.getName());
                 actualizeComputerBankCardsLabels();
             }
@@ -305,7 +305,7 @@ public class MonopolyGameOfThronesApplication extends Application{
             }
         }
 
-        if(user.getUserSetOfSpecialCards().containsKey(user.getPositionOfThePiece())){
+        if(user.getUserSetOfSpecialCards().containsKey(user.getPositionOfThePiece())) {
             SpecialCard specialCardToDelete = user.getUserSetOfSpecialCards().get(user.getPositionOfThePiece()) ;
 
             setOfSepcialCards.putSpecialCardToTheSet(user.getPositionOfThePiece(),specialCardToDelete);
@@ -319,7 +319,7 @@ public class MonopolyGameOfThronesApplication extends Application{
                 user.userFlowPaneCardActualization();
                 actualizeUserLabels(user);
             }
-            if(!user.isHuman()){
+            if(!user.isHuman()) {
                 appendTextComputerStatus.appendText(user.getUsername() + ": Sold: " + specialCardToDelete.getName());
                 actualizeComputerBankCardsLabels();
             }
@@ -385,11 +385,11 @@ public class MonopolyGameOfThronesApplication extends Application{
     }
 
 //    // turning
-    public void paymentExecution(User user, int money){
+    public void paymentExecution(User user, int money) {
         user.substractMoney(money);
         bank.giveMoneyToTheBank(money);
     }
-    public void actualizeUserLabels(User user){
+    public void actualizeUserLabels(User user) {
         userMoneyQuantityLabel.setText("Your cash: " + user.getMoney());
         bankMoneyQuantityLabel.setText(String.valueOf(bank.getMoneyInBank()));
         quantityOfCardsValueLabel.setText(String.valueOf(user.getUserSetOfLandCards().size()));
@@ -397,12 +397,12 @@ public class MonopolyGameOfThronesApplication extends Application{
         moneyProgressBar.setProgress(percentageOfMoney);
     }
 
-    public void actualizeComputerBankCardsLabels(){
+    public void actualizeComputerBankCardsLabels() {
         bankMoneyQuantityLabel.setText(String.valueOf(bank.getMoneyInBank()));
     }
 
 
-    public void user1PayToUser2Execution(User payingUser, User landlord){
+    public void user1PayToUser2Execution(User payingUser, User landlord) {
         if(landlord.getUserSetOfLandCards().containsKey(payingUser.getPositionOfThePiece())){
             payingUser.substractMoney(landlord.getUserSetOfLandCards().get(payingUser.getPositionOfThePiece()).getPrice());
             landlord.addMoney(landlord.getUserSetOfLandCards().get(payingUser.getPositionOfThePiece()).getPrice());
@@ -413,7 +413,7 @@ public class MonopolyGameOfThronesApplication extends Application{
         }
     }
 
-    public void payingDebtsToTheLandlords(User payingUser,User user2,User user3,User user4){
+    public void payingDebtsToTheLandlords(User payingUser,User user2,User user3,User user4) {
         if(payingUser.isPlayable()) {
             user1PayToUser2Execution(payingUser,user2);
             user1PayToUser2Execution(payingUser,user3);
@@ -426,7 +426,7 @@ public class MonopolyGameOfThronesApplication extends Application{
         userDelete(payingUser);
     }
 
- public void eventsDuringDiceThrow(User user){
+ public void eventsDuringDiceThrow(User user) {
      int dice1Value = Dice.diceThrow();
      int dice2Value = Dice.diceThrow();
      int diceSumValueOfPieceTranslation = dice1Value + dice2Value;
@@ -482,13 +482,13 @@ public class MonopolyGameOfThronesApplication extends Application{
              user.setPositionOfThePiece(valueOfTranslationOfThePiece);
              if(user.isHuman()) {
                  MessgaeBox.getInformationTextLabel().setText("The jail is waiting my lord. You have lost one throw");
-             }else{
+             }else {
                  appendTextComputerStatus.appendText(user.getUsername() + ": Is going to the jail - lost one throw");
              }
 
              user.setInJail(true);
 
-         }else{
+         }else {
              user.setPositionOfThePiece(valueOfTranslationOfThePiece);
              user.addJailQuantityOfTurns();
              GridPane.setColumnIndex(user.getThePieceAsNode(), GridConverseToBoardPlace.converse1dTo2dGridXCoordinate(user.getPositionOfThePiece()));
@@ -890,6 +890,7 @@ public class MonopolyGameOfThronesApplication extends Application{
         Background manual = new Background(manualImageBackground);
         layout.setBackground(manual);
         layout.getChildren().add(goBackToTheGameButton);
+        layout.setAlignment(Pos.BOTTOM_LEFT);
 
         Button sceneShow = new Button("Show the manual");
         gridOfGame.add(sceneShow,14,9,2,1);

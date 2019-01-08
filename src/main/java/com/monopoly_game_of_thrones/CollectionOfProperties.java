@@ -18,33 +18,33 @@ public class CollectionOfProperties {
     private Map<Integer, FlowPane> setOfProperties = new HashMap();
     private boolean noChangeRedToVillage;
 
-    public void setIsBought(int boardPlaceNumber){
+    public void setIsBought(int boardPlaceNumber) {
         setOfProperties.get(boardPlaceNumber).getChildren().add(new ImageView(dot));
         noChangeRedToVillage = false;
     }
 
-    public void setIsSold(int boardPlaceNumber){
+    public void setIsSold(int boardPlaceNumber) {
         setOfProperties.get(boardPlaceNumber).getChildren().clear();
         noChangeRedToVillage = false;
     }
 
 
-    public void setVillageOnThePane(int boardPlaceNumber){
+    public void setVillageOnThePane(int boardPlaceNumber) {
 
-        if(setOfProperties.get(boardPlaceNumber).getChildren().isEmpty()){
+        if(setOfProperties.get(boardPlaceNumber).getChildren().isEmpty()) {
             noChangeRedToVillage = false;
         }
-        if(setOfProperties.get(boardPlaceNumber).getChildren().size()>1){
+        if(setOfProperties.get(boardPlaceNumber).getChildren().size()>1) {
             noChangeRedToVillage = false;
         }
 
-        if(setOfProperties.get(boardPlaceNumber).getChildren().size() == 1 && !noChangeRedToVillage){
+        if(setOfProperties.get(boardPlaceNumber).getChildren().size() == 1 && !noChangeRedToVillage) {
             setOfProperties.get(boardPlaceNumber).getChildren().clear();
             noChangeRedToVillage = true;
         }
         setOfProperties.get(boardPlaceNumber).getChildren().add(new ImageView(village));
     }
-    public void setCastleOnThePane(int boardPlaceNumber){
+    public void setCastleOnThePane(int boardPlaceNumber) {
         setOfProperties.get(boardPlaceNumber).getChildren().clear();
         setOfProperties.get(boardPlaceNumber).getChildren().add(new ImageView(castle));
 
@@ -54,12 +54,12 @@ public class CollectionOfProperties {
         return setOfProperties;
     }
 
-    public void removieVIllageFromThePane(int boardPlaceNumber){
+    public void removieVIllageFromThePane(int boardPlaceNumber) {
 
         ObservableList<Node> children = setOfProperties.get(boardPlaceNumber).getChildren();
         if(children.size() >0) children.remove(children.size()-1);
 
-        if(setOfProperties.get(boardPlaceNumber).getChildren().isEmpty()){
+        if(setOfProperties.get(boardPlaceNumber).getChildren().isEmpty()) {
             setOfProperties.get(boardPlaceNumber).getChildren().add(new ImageView(dot));
             noChangeRedToVillage = false;
 
@@ -413,7 +413,7 @@ public class CollectionOfProperties {
         setOfProperties.put(35, propertyOfSpecialLand4);
         setOfProperties.put(37, propertyOfLand21);
         setOfProperties.put(39, propertyOfLand22);
-        for(Map.Entry<Integer, FlowPane> propertySettings: setOfProperties.entrySet() ){
+        for(Map.Entry<Integer, FlowPane> propertySettings: setOfProperties.entrySet()) {
             propertySettings.getValue().setMaxHeight(2);
         }
 

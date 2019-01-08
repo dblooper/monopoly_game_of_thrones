@@ -10,18 +10,18 @@ public class SpecialCard {
         this.price = price;
     }
 
-    public void setQuantityOfUserSpecialCards(int quantityOfSpecialCards){
+    public void setQuantityOfUserSpecialCards(int quantityOfSpecialCards) {
         this.quantityOfSpecialCards = quantityOfSpecialCards;
     }
-    public String getName(){
+    public String getName() {
         return name;
     }
-    public int getPrice(){
+    public int getPrice() {
         return price;
     }
 
-    public int getPriceToPayForStaying(){
-        switch(quantityOfSpecialCards){
+    public int getPriceToPayForStaying() {
+        switch(quantityOfSpecialCards) {
             case 2:
                 return price = 350;
             case 3:

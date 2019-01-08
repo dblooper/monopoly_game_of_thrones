@@ -28,21 +28,21 @@ public class SetOfRandomChosenCards {
         randomChosenCardMap.put(8,getFromTheBank3);
     }
 
-    public RandomChosenCard returnedCard(){
+    public RandomChosenCard returnedCard() {
         Random random = new Random();
         int randomKeyValue = 1 + random.nextInt(8);
         return randomChosenCardMap.get(randomKeyValue);
     }
 
-    public RandomChosenCard returnedCardHandling(User user, Bank bank, MoneyBox moneyBox, Label moneyBoxStatusLabel){
+    public RandomChosenCard returnedCardHandling(User user, Bank bank, MoneyBox moneyBox, Label moneyBoxStatusLabel) {
         RandomChosenCard randomChosenCard = returnedCard();
-        if(randomChosenCard.isGoToJailDecision()){
+        if(randomChosenCard.isGoToJailDecision()) {
             user.setPositionOfThePiece(10);
             user.setInJail(true);
             GridPane.setColumnIndex(user.getThePieceAsNode(), GridConverseToBoardPlace.converse1dTo2dGridXCoordinate(user.getPositionOfThePiece()));
             GridPane.setRowIndex(user.getThePieceAsNode(), GridConverseToBoardPlace.converse1dTo2dGridYCoordinate(user.getPositionOfThePiece()));
         }
-        else if(randomChosenCard.getPrice()>0 && randomChosenCard.isSalary()){
+        else if(randomChosenCard.getPrice()>0 && randomChosenCard.isSalary()) {
             user.addMoney(randomChosenCard.getPrice());
             bank.takeMoneyFromTheBank(randomChosenCard.getPrice());
         }
