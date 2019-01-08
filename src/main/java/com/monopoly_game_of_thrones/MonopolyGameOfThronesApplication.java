@@ -34,7 +34,7 @@ public class MonopolyGameOfThronesApplication extends Application {
     private BorderPane image = new BorderPane();
 //    CASH DATA
     private int amountOfMoneyInTheGame = 15000;
-    private int startingMoney = 800;
+    private int startingMoney = 1000;
     private int beginPlaceOfThePiece = 0;
     private int costOfTheVillage = 150;
     private int costOfTheCastle = 300;
@@ -78,10 +78,12 @@ public class MonopolyGameOfThronesApplication extends Application {
         int los1 = 1 + random.nextInt(100);
         int los2 = 1 + random.nextInt(100);
         int los3 = random.nextInt(5);
+        int los4 = 1 + random.nextInt(100);
 
-        if(los1<90){
+        if(los1<95 && user.getMoney() > 200) {
             buyALand(user);
         }
+
         if(los2<70) {
             while (los3 > 0) {
                 if (user.getMoney() > costOfTheVillage+150) {
@@ -91,11 +93,18 @@ public class MonopolyGameOfThronesApplication extends Application {
             }
         }
 
-        if(user.getMoney()<150){
-            sellALand(user);
+        if(user.getMoney() < 400) {
             sellAProperty(user);
         }
-        takeTheRandomCard(user);
+
+        if(user.getMoney() < 150) {
+            sellALand(user);
+        }
+
+        if(los4<75) {
+            takeTheRandomCard(user);
+        }
+
     }
 
     public void removeFromUsersMapAndPane(User user) {
@@ -467,6 +476,10 @@ public class MonopolyGameOfThronesApplication extends Application {
              user.addMoney(paymentToTheUser);
              if (user.isHuman()) {
                  actualizeUserLabels(user);
+                 MessgaeBox.setInformationTextLabel("The Saint Land. You earned: " + paymentToTheUser + "$");
+             }
+             if(!user.isHuman()){
+                 appendTextComputerStatus.appendText(user.getUsername() + ": has earned " + paymentToTheUser +"$ on the Saint Land");
              }
          } else if (valueOfTranslationOfThePiece == 20) {
              if (moneyBox.getMoneyCollected() > 0) {
@@ -915,7 +928,7 @@ public class MonopolyGameOfThronesApplication extends Application {
             primaryStage.centerOnScreen();
         });
         startTheGame.setOnAction(e->{
-            if(textField.getCharacters().length() != 3 && textField.getCharacters().length() < 16) {
+            if(textField.getCharacters().length() > 4 && textField.getCharacters().length() < 16) {
                 humanUser.setUsername(textField.getCharacters().toString());
                 primaryStage.setScene(scene);
                 primaryStage.centerOnScreen();

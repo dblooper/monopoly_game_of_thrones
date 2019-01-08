@@ -178,7 +178,7 @@ public class CollectionOfProperties {
                 "\n-2 villages: 380" +
                 "\n-3 villages: 480$" +
                 "\n-4 villages: 580$" +
-                "\n-1 castle: 1160$");
+                "\n-1 castle: 1180$");
         Tooltip.install(propertyOfLand9,tooltip9);
         MonopolyGameOfThronesApplication.gridOfGame.add(propertyOfLand9,7,1);
 
