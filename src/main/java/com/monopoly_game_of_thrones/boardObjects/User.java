@@ -1,5 +1,6 @@
-package com.monopoly_game_of_thrones;
+package com.monopoly_game_of_thrones.boardObjects;
 
+import com.monopoly_game_of_thrones.MonopolyGameOfThronesApplication;
 import javafx.geometry.VPos;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -73,7 +74,7 @@ public class User extends Piece {
         GridPane.setValignment(userFlowPaneCard, VPos.TOP);
     }
 
-    public void addtoUserFlowPaneCardStatus(String cardName, int cardPrice){
+    public void addToUserFlowPaneCardStatus(String cardName, int cardPrice){
         Label addCard = new Label(cardName + "; Price: " + cardPrice);
         addCard.maxWidth(5);
         addCard.maxHeight(2);
@@ -86,10 +87,10 @@ public class User extends Piece {
     public void userFlowPaneCardActualization(){
         userFlowPaneCard.getChildren().clear();
         for (Map.Entry<Integer, LandCard> entryCardMap : userSetOfLandCards.entrySet()) {
-            addtoUserFlowPaneCardStatus(entryCardMap.getValue().getName(), entryCardMap.getValue().getPrice());
+            addToUserFlowPaneCardStatus(entryCardMap.getValue().getName(), entryCardMap.getValue().getPrice());
         }
         for (Map.Entry<Integer, SpecialCard> entryCardMap : userSetOfSpecialCards.entrySet()) {
-            addtoUserFlowPaneCardStatus(entryCardMap.getValue().getName(), entryCardMap.getValue().getPriceToPayForStaying());
+            addToUserFlowPaneCardStatus(entryCardMap.getValue().getName(), entryCardMap.getValue().getPriceToPayForStaying());
         }
     }
 

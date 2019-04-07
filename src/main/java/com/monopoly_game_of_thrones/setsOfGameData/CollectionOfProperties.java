@@ -1,5 +1,6 @@
-package com.monopoly_game_of_thrones;
+package com.monopoly_game_of_thrones.setsOfGameData;
 
+import com.monopoly_game_of_thrones.MonopolyGameOfThronesApplication;
 import javafx.collections.ObservableList;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
@@ -15,7 +16,7 @@ public class CollectionOfProperties {
     private Image castle = new Image("file:resources/pieces/castle.png");
     private Image village = new Image("file:resources/pieces/village.png");
     private Image dot = new Image("file:resources/pieces/dot.png");
-    private Map<Integer, FlowPane> setOfProperties = new HashMap();
+    private Map<Integer, FlowPane> setOfProperties = new HashMap<>();
     private boolean noChangeRedToVillage;
 
     public void setIsBought(int boardPlaceNumber) {
@@ -67,7 +68,7 @@ public class CollectionOfProperties {
 
     }
 
-    public void addPropertyFlowPanesTOTheGrid(){
+    public void addPropertyFlowPanesToTheGrid(){
 
 
         FlowPane propertyOfLand1 = new FlowPane(Orientation.HORIZONTAL);

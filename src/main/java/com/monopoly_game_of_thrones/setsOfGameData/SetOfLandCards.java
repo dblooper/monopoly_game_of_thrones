@@ -1,4 +1,6 @@
-package com.monopoly_game_of_thrones;
+package com.monopoly_game_of_thrones.setsOfGameData;
+
+import com.monopoly_game_of_thrones.boardObjects.LandCard;
 
 import java.util.HashMap;
 import java.util.Map;

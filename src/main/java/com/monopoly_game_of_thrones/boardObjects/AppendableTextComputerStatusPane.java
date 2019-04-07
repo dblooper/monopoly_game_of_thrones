@@ -1,4 +1,4 @@
-package com.monopoly_game_of_thrones;
+package com.monopoly_game_of_thrones.boardObjects;
 
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;

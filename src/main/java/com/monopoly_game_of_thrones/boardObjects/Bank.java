@@ -1,4 +1,4 @@
-package com.monopoly_game_of_thrones;
+package com.monopoly_game_of_thrones.boardObjects;
 
 public class Bank {
     private int money;

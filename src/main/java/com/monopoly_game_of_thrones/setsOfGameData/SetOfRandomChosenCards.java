@@ -1,5 +1,10 @@
-package com.monopoly_game_of_thrones;
+package com.monopoly_game_of_thrones.setsOfGameData;
 
+import com.monopoly_game_of_thrones.boardObjects.Bank;
+import com.monopoly_game_of_thrones.boardObjects.MoneyBox;
+import com.monopoly_game_of_thrones.boardObjects.RandomChosenCard;
+import com.monopoly_game_of_thrones.boardObjects.User;
+import com.monopoly_game_of_thrones.gridMotionLogic.GridConverseToBoardPlace;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import java.util.HashMap;

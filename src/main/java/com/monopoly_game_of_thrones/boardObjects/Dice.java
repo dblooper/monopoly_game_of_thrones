@@ -1,4 +1,4 @@
-package com.monopoly_game_of_thrones;
+package com.monopoly_game_of_thrones.boardObjects;
 
 import java.util.Random;
 

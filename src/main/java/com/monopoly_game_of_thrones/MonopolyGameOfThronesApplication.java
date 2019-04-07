@@ -1,5 +1,11 @@
 package com.monopoly_game_of_thrones;
 
+import com.monopoly_game_of_thrones.boardObjects.*;
+import com.monopoly_game_of_thrones.gridMotionLogic.GridConverseToBoardPlace;
+import com.monopoly_game_of_thrones.setsOfGameData.CollectionOfProperties;
+import com.monopoly_game_of_thrones.setsOfGameData.SetOfLandCards;
+import com.monopoly_game_of_thrones.setsOfGameData.SetOfRandomChosenCards;
+import com.monopoly_game_of_thrones.setsOfGameData.SetOfSepcialCards;
 import javafx.application.Application;
 import javafx.geometry.*;
 import javafx.scene.Scene;
@@ -18,7 +24,7 @@ import java.util.Random;
 
 public class MonopolyGameOfThronesApplication extends Application {
 
-    protected static GridPane gridOfGame = new GridPane();
+    public static GridPane gridOfGame = new GridPane();
 //    imported images
     private Image imageBackground = new Image("file:resources/MonopolyGameOfThrones-scene.jpg");
     private Image manualImage = new Image("file:resources/MANUAL.png");
@@ -49,9 +55,9 @@ public class MonopolyGameOfThronesApplication extends Application {
     private Label statusOfTheGame = new Label("Status of the game: ");
     private Label bankStatusTextLabel = new Label("Money in the bank: ");
     private Label bankMoneyQuantityLabel = new Label();
-    private Label quantityOfCardsTextLabel = new Label("Quantity of land cards: ");
+    private Label quantityOfCardsTextLabel = new Label("Cards q-ty land/house: ");
     private Label quantityOfCardsValueLabel = new Label();
-    private Label userCardListLabel = new Label("User cards: ");
+    private Label userCardListLabel = new Label("Your cards Name; Price: ");
     private Label userInfoOfTheGameTextLabel = new Label("User information:");
     private Label usersOnBoardLabel = new Label("Users in the game:");
     private Label userMoneyQuantityLabel = new Label();
@@ -253,9 +259,10 @@ public class MonopolyGameOfThronesApplication extends Application {
             setOfLandCards.removeCardFromMap(user.getPositionOfThePiece(), user.getUserSetOfLandCards().get(user.getPositionOfThePiece()));
             collectionOfProperties.setIsBought(user.getPositionOfThePiece());
                 if(user.isHuman()) {
+//                    System.out.println(user.getUserSetOfLandCards().size());
                     actualizeUserLabels(user);
                     MessgaeBox.getInformationTextLabel().setText("Bought: " + user.getUserSetOfLandCards().get(user.getPositionOfThePiece()).getName());
-                    user.addtoUserFlowPaneCardStatus(user.getUserSetOfLandCards().get(user.getPositionOfThePiece()).getName(), user.getUserSetOfLandCards().get(user.getPositionOfThePiece()).getPrice());
+                    user.addToUserFlowPaneCardStatus(user.getUserSetOfLandCards().get(user.getPositionOfThePiece()).getName(), user.getUserSetOfLandCards().get(user.getPositionOfThePiece()).getPrice());
                     user.userFlowPaneCardActualization();
                 }
                 if(!user.isHuman()) {
@@ -274,7 +281,7 @@ public class MonopolyGameOfThronesApplication extends Application {
                 if(user.isHuman()) {
                     actualizeUserLabels(user);
                     MessgaeBox.getInformationTextLabel().setText("Bought: " + user.getUserSetOfSpecialCards().get(user.getPositionOfThePiece()).getName());
-                    user.addtoUserFlowPaneCardStatus(user.getUserSetOfSpecialCards().get(user.getPositionOfThePiece()).getName(), user.getUserSetOfSpecialCards().get(user.getPositionOfThePiece()).getPrice());
+                    user.addToUserFlowPaneCardStatus(user.getUserSetOfSpecialCards().get(user.getPositionOfThePiece()).getName(), user.getUserSetOfSpecialCards().get(user.getPositionOfThePiece()).getPrice());
                     user.userFlowPaneCardActualization();
                 }
                 if(!user.isHuman()) {
@@ -299,15 +306,8 @@ public class MonopolyGameOfThronesApplication extends Application {
             collectionOfProperties.setIsSold(user.getPositionOfThePiece());
 
             user.getUserSetOfLandCards().remove(user.getPositionOfThePiece(),user.getUserSetOfLandCards().get(user.getPositionOfThePiece()));
-            if(user.isHuman()) {
-                MessgaeBox.setInformationTextLabel("Sold: "+ landToDelete.getName());
-                user.userFlowPaneCardActualization();
-                actualizeUserLabels(user);
-            }
-            if(!user.isHuman()) {
-                appendTextComputerStatus.appendText(user.getUsername() + ": Sold: " + landToDelete.getName());
-                actualizeComputerBankCardsLabels();
-            }
+
+            messageBoxUserCompCardsLabelsAztualization(user, landToDelete.getName());
 
         }else{
             if(user.isHuman()) {
@@ -324,15 +324,8 @@ public class MonopolyGameOfThronesApplication extends Application {
 
             user.getUserSetOfSpecialCards().remove(user.getPositionOfThePiece(),user.getUserSetOfSpecialCards().get(user.getPositionOfThePiece()));
             collectionOfProperties.setIsSold(user.getPositionOfThePiece());
-            if(user.isHuman()) {
-                MessgaeBox.setInformationTextLabel("Sold: "+ specialCardToDelete.getName());
-                user.userFlowPaneCardActualization();
-                actualizeUserLabels(user);
-            }
-            if(!user.isHuman()) {
-                appendTextComputerStatus.appendText(user.getUsername() + ": Sold: " + specialCardToDelete.getName());
-                actualizeComputerBankCardsLabels();
-            }
+
+            messageBoxUserCompCardsLabelsAztualization(user, specialCardToDelete.getName());
 
             if(user.isHuman()) {
                 user.userFlowPaneCardActualization();
@@ -362,7 +355,7 @@ public class MonopolyGameOfThronesApplication extends Application {
 
                 }
                 user.getUserSetOfLandCards().clear();
-
+                user.substractMoney(user.getMoney());
             }
 
             if (!(user.getUserSetOfSpecialCards().isEmpty())) {
@@ -402,7 +395,8 @@ public class MonopolyGameOfThronesApplication extends Application {
     public void actualizeUserLabels(User user) {
         userMoneyQuantityLabel.setText("Your cash: " + user.getMoney());
         bankMoneyQuantityLabel.setText(String.valueOf(bank.getMoneyInBank()));
-        quantityOfCardsValueLabel.setText(String.valueOf(user.getUserSetOfLandCards().size()));
+        quantityOfCardsValueLabel.setText(user.getUserSetOfLandCards().size() + "/" + user.getUserSetOfSpecialCards().size());
+//        System.out.println(user.getUserSetOfLandCards().size());
         float percentageOfMoney = (float)user.getMoney()/this.amountOfMoneyInTheGame;
         moneyProgressBar.setProgress(percentageOfMoney);
     }
@@ -446,11 +440,12 @@ public class MonopolyGameOfThronesApplication extends Application {
      int paymentToTheUser = 150;
      int paymentToTheBank2 = 100;
 
+     if(user.isPlayable()) {
          if (!(valueOfTranslationOfThePiece <= 40)) {
              if (bank.takeMoneyFromTheBank(bonusAfterPassTheStart)) {
                  valueOfTranslationOfThePiece = valueOfTranslationOfThePiece - 40;
                  user.addMoney(bonusAfterPassTheStart);
-
+                 bank.takeMoneyFromTheBank(bonusAfterPassTheStart);
                  if (user.isHuman()) {
                      actualizeUserLabels(user);
                  }
@@ -474,12 +469,13 @@ public class MonopolyGameOfThronesApplication extends Application {
          } else if (valueOfTranslationOfThePiece == 12 ||
                  valueOfTranslationOfThePiece == 28) {
              user.addMoney(paymentToTheUser);
+             bank.takeMoneyFromTheBank(paymentToTheUser);
              if (user.isHuman()) {
                  actualizeUserLabels(user);
                  MessgaeBox.setInformationTextLabel("The Saint Land. You earned: " + paymentToTheUser + "$");
              }
-             if(!user.isHuman()){
-                 appendTextComputerStatus.appendText(user.getUsername() + ": has earned " + paymentToTheUser +"$ on the Saint Land");
+             if (!user.isHuman()) {
+                 appendTextComputerStatus.appendText(user.getUsername() + ": has earned " + paymentToTheUser + "$ on the Saint Land");
              }
          } else if (valueOfTranslationOfThePiece == 20) {
              if (moneyBox.getMoneyCollected() > 0) {
@@ -494,26 +490,26 @@ public class MonopolyGameOfThronesApplication extends Application {
              GridPane.setColumnIndex(user.getThePieceAsNode(), GridConverseToBoardPlace.converse1dTo2dGridXCoordinate(valueOfTranslationOfThePiece));
              GridPane.setRowIndex(user.getThePieceAsNode(), GridConverseToBoardPlace.converse1dTo2dGridYCoordinate(valueOfTranslationOfThePiece));
              user.setPositionOfThePiece(valueOfTranslationOfThePiece);
-             if(user.isHuman()) {
+             if (user.isHuman()) {
                  MessgaeBox.getInformationTextLabel().setText("The jail is waiting my lord. You have lost one throw");
-             }else {
+             } else {
                  appendTextComputerStatus.appendText(user.getUsername() + ": Is going to the jail - lost one throw");
              }
 
              user.setInJail(true);
 
-         }else {
+         } else {
              user.setPositionOfThePiece(valueOfTranslationOfThePiece);
              user.addJailQuantityOfTurns();
              GridPane.setColumnIndex(user.getThePieceAsNode(), GridConverseToBoardPlace.converse1dTo2dGridXCoordinate(user.getPositionOfThePiece()));
              GridPane.setRowIndex(user.getThePieceAsNode(), GridConverseToBoardPlace.converse1dTo2dGridYCoordinate(user.getPositionOfThePiece()));
 
          }
-
          if (user.isHuman()) {
              dice1Indication.setText(String.valueOf(dice1Value));
              dice2Indication.setText(String.valueOf(dice2Value));
          }
+     }
 
      if (computerUsersFlowPane.getChildren().size() == 1
              && user.isPlayable()) {
@@ -521,6 +517,19 @@ public class MonopolyGameOfThronesApplication extends Application {
      }
 
  }
+    public void messageBoxUserCompCardsLabelsAztualization(User user, String CardToDeleteName){
+
+        if(user.isHuman()) {
+            MessgaeBox.setInformationTextLabel("Sold: "+ CardToDeleteName);
+            user.userFlowPaneCardActualization();
+            actualizeUserLabels(user);
+        }
+        if(!user.isHuman()) {
+            appendTextComputerStatus.appendText(user.getUsername() + ": Sold: " + CardToDeleteName);
+            actualizeComputerBankCardsLabels();
+        }
+
+    }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -562,8 +571,7 @@ public class MonopolyGameOfThronesApplication extends Application {
         gridOfGame.getRowConstraints().addAll(rowsEdge,rowsHousesField, rowsMid,
                 rowsMid,rowsMid,rowsMid,rowsMid,rowsMid,rowsMid, rowsMid,rowsMid,rowsHousesField, rowsEdge);
 
-//Creating a backgroudn of the game
-
+//Creating a backgroudnd of the game
         gridOfGame.add(image,0,0,13,13);
         image.setBackground(background);
         BorderPane.setAlignment(image, Pos.CENTER);
@@ -621,7 +629,7 @@ public class MonopolyGameOfThronesApplication extends Application {
 
         Button sellALandButton = new Button("$$Sell \na land$$");
 
-        Button letGameGoingOnButton = new Button("Let the Game \ngoing on!");
+        Button letGameGoingOnButton = new Button("Let the Game \nBegin!");
         letGameGoingOnButton.setContentDisplay(ContentDisplay.TOP);
 
 //Adding buttons to grid
@@ -644,8 +652,7 @@ public class MonopolyGameOfThronesApplication extends Application {
         GridPane.setHalignment(sellAProperyButton, HPos.LEFT);
         GridPane.setHalignment(letGameGoingOnButton, HPos.RIGHT);
 
-//Adding settings to the labels
-
+//Adding settings to the label
         gridOfGame.add(moneyBoxLabel,6,5,2,1);
         GridPane.setValignment(moneyBoxLabel, VPos.TOP);
         moneyBoxLabel.setFont(Font.font("Papyrus",12));
@@ -659,7 +666,7 @@ public class MonopolyGameOfThronesApplication extends Application {
 
 
         gridOfGame.add(statusOfTheGame,14,2,2,1);
-        statusOfTheGame.setFont(new Font("Papyrus",16));
+        statusOfTheGame.setFont(new Font("Papyrus",15));
         GridPane.setValignment(statusOfTheGame,VPos.BOTTOM);
         gridOfGame.add(bankStatusTextLabel,14,3,2,1);
         bankStatusTextLabel.setFont(new Font("Papyrus",12));
@@ -726,7 +733,7 @@ public class MonopolyGameOfThronesApplication extends Application {
         dice2Indication.setFont(Font.font("Papyrus",30));
         gridOfGame.add(dice2Indication,15,0,1,1);
 
-        collectionOfProperties.addPropertyFlowPanesTOTheGrid();
+        collectionOfProperties.addPropertyFlowPanesToTheGrid();
 
 //------------------------------------endGameLayout---------------------------------------------------------------------------------------
 
@@ -748,7 +755,7 @@ public class MonopolyGameOfThronesApplication extends Application {
 
 
         gridOfGame.add(usersOnBoardLabel,8,2,2,1);
-        GridPane.setValignment(usersOnBoardLabel,VPos.TOP);
+        GridPane.setValignment(usersOnBoardLabel,VPos.CENTER);
         usersOnBoardLabel.setBackground(new Background(new BackgroundFill(Color.WHITE,CornerRadii.EMPTY,Insets.EMPTY)));
         usersOnBoardLabel.setFont(Font.font("Papyrus",12));
 
@@ -767,7 +774,6 @@ public class MonopolyGameOfThronesApplication extends Application {
         GridPane.setValignment(compUser3.getThePieceAsNode(), VPos.BOTTOM);
 
         //CASH DATA
-
         moneyBoxStatus.setText("0");
 
         bank.takeMoneyFromTheBank(startingMoney);
@@ -782,7 +788,7 @@ public class MonopolyGameOfThronesApplication extends Application {
 
 //      STATUS OF THE GAME INFORMATION
         actualizeUserLabels(humanUser);
-        MessgaeBox.setInformationTextLabel("WELCOME TO MONOPOLY!");
+        MessgaeBox.setInformationTextLabel("WELCOME TO MONOPOLY! Please throw the dices to start! Good luck!");
 //------------------------------------EndStatus---------------------------------------------------------------------------------------
 //------------------------------------gamePerformance---------------------------------------------------------------------------------------
             throwDiceButton.setOnAction(event -> {
@@ -868,7 +874,7 @@ public class MonopolyGameOfThronesApplication extends Application {
         textField.setPromptText("Type your name");
         textField.setPrefColumnCount(10);
 
-        Text titleText = new Text("Welcome to Monopoly!");
+        Text titleText = new Text("Welcome to Monopoly! Find your destiny!");
         titleText.setFont(Font.font("Papyrus",26));
 
         Text information = new Text("Please type your name to start the game.(Min 4 max 15 characters)");
@@ -928,7 +934,7 @@ public class MonopolyGameOfThronesApplication extends Application {
             primaryStage.centerOnScreen();
         });
         startTheGame.setOnAction(e->{
-            if(textField.getCharacters().length() > 4 && textField.getCharacters().length() < 16) {
+            if(textField.getCharacters().length() > 3 && textField.getCharacters().length() < 16) {
                 humanUser.setUsername(textField.getCharacters().toString());
                 primaryStage.setScene(scene);
                 primaryStage.centerOnScreen();
