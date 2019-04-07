@@ -1,6 +1,6 @@
-package com.monopoly_game_of_thrones.boardObjects;
+package com.monopolyGameOfThrones.boardObjects;
 
-import com.monopoly_game_of_thrones.MonopolyGameOfThronesApplication;
+import com.monopolyGameOfThrones.MonopolyGameOfThronesApplication;
 import javafx.geometry.VPos;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;

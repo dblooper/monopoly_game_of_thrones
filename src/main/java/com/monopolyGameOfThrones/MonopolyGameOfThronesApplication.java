@@ -1,11 +1,11 @@
-package com.monopoly_game_of_thrones;
+package com.monopolyGameOfThrones;
 
-import com.monopoly_game_of_thrones.boardObjects.*;
-import com.monopoly_game_of_thrones.gridMotionLogic.GridConverseToBoardPlace;
-import com.monopoly_game_of_thrones.setsOfGameData.CollectionOfProperties;
-import com.monopoly_game_of_thrones.setsOfGameData.SetOfLandCards;
-import com.monopoly_game_of_thrones.setsOfGameData.SetOfRandomChosenCards;
-import com.monopoly_game_of_thrones.setsOfGameData.SetOfSepcialCards;
+import com.monopolyGameOfThrones.boardObjects.*;
+import com.monopolyGameOfThrones.gridMotionLogic.GridConverseToBoardPlace;
+import com.monopolyGameOfThrones.setsOfGameData.CollectionOfProperties;
+import com.monopolyGameOfThrones.setsOfGameData.SetOfLandCards;
+import com.monopolyGameOfThrones.setsOfGameData.SetOfRandomChosenCards;
+import com.monopolyGameOfThrones.setsOfGameData.SetOfSepcialCards;
 import javafx.application.Application;
 import javafx.geometry.*;
 import javafx.scene.Scene;

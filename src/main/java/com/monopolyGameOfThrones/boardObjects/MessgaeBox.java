@@ -1,4 +1,4 @@
-package com.monopoly_game_of_thrones.boardObjects;
+package com.monopolyGameOfThrones.boardObjects;
 
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;

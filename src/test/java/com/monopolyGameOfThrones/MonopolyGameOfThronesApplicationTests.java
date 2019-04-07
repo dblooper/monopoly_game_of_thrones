@@ -1,4 +1,4 @@
-package com.monopoly_game_of_thrones;
+package com.monopolyGameOfThrones;
 
 public class MonopolyGameOfThronesApplicationTests {
 

@@ -1,6 +1,6 @@
-package com.monopoly_game_of_thrones.setsOfGameData;
+package com.monopolyGameOfThrones.setsOfGameData;
 
-import com.monopoly_game_of_thrones.MonopolyGameOfThronesApplication;
+import com.monopolyGameOfThrones.MonopolyGameOfThronesApplication;
 import javafx.collections.ObservableList;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;

@@ -1,4 +1,4 @@
-package com.monopoly_game_of_thrones.boardObjects;
+package com.monopolyGameOfThrones.boardObjects;
 
 public class SpecialCard {
     private String name;

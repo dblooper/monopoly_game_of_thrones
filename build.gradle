@@ -15,7 +15,7 @@ apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
-group = 'com.monopoly_game_of_thrones'
+group = 'com.monopolyGameOfThrones'
 version = '0.0.1'
 sourceCompatibility = 1.8
 

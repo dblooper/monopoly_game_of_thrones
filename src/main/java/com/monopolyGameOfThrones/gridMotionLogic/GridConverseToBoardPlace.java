@@ -1,4 +1,4 @@
-package com.monopoly_game_of_thrones.gridMotionLogic;
+package com.monopolyGameOfThrones.gridMotionLogic;
 
 public class GridConverseToBoardPlace {
 
